@@ -1,0 +1,19 @@
+#__username__label {
+  &::after {
+    content: "*";
+    color: red;
+  }
+}
+.user-section-flex {
+  width: 80%;
+  height: 50%;
+}
+
+.user-flex {
+  width: 50%;
+}
+.wrapper {
+  position: absolute;
+  height: 100%;
+  background-color: yellow;
+}

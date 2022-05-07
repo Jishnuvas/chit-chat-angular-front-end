@@ -1,0 +1,66 @@
+<div
+  class="container-fluid container__wrapper d-flex justify-content-center align-items-center"
+>
+  <form
+    [formGroup]="chatUI"
+    class="form-element d-flex justify-content-center align-items-center"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="card-wrapper d-flex justify-content-center">
+      <div class="card bg-dark text-white flex-column card-custom shadow">
+        <div class="card-header"><h1>CHIT CHAT</h1></div>
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div class="message-area bg-light text-dark">
+            <ng-container *ngFor="let item of typedText | async">
+              <ng-container></ng-container>
+              <ng-container></ng-container>
+              <ng-container *ngIf="item.type === 'JOIN'">
+                <div>
+                  <span>
+                    <strong>{{ item.user }}:</strong>
+                  </span>
+                  <span style="color: green"><strong>Joined</strong> </span>
+                </div></ng-container
+              >
+              <ng-container *ngIf="item.type === 'LEAVE'">
+                <div>
+                  <span>
+                    <span style="color: red"><strong>left</strong> </span>
+                  </span>
+                  <span>LEFT </span>
+                </div></ng-container
+              >
+              <ng-container *ngIf="item.type === 'CHAT'">
+                <div>
+                  <span>
+                    <strong>{{ item.user }}:</strong>
+                  </span>
+                  <span style="color: blue">{{ item.content }} </span>
+                </div></ng-container
+              >
+            </ng-container>
+          </div>
+          <div class="typing-area-container">
+            <div class="d-flex typing-area bg-dark">
+              <div class="input-box">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="message"
+                  id="__message"
+                  placeholder="Type your message here"
+                  formControlName="message"
+                />
+              </div>
+              <div>
+                <button [disabled]="!chatUI.valid" class="btn btn-secondary">
+                  Send
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
